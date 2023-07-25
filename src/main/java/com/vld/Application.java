@@ -1,7 +1,9 @@
 package com.vld;
 
 
+import com.vld.model.Alcohol;
 import com.vld.model.AlcoholType;
+import com.vld.model.Bar;
 import com.vld.service.BarService;
 import com.vld.service.impl.AlcoholServiceImpl;
 import com.vld.service.impl.AlcoholTypeServiceImpl;
@@ -10,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.List;
 
 @SpringBootApplication(scanBasePackages = {
         "com.vld"})
@@ -36,5 +40,9 @@ public class Application implements CommandLineRunner {
         Long id = alcoholTypeService.create(alcoholType);
         AlcoholType alcoholType1 = alcoholTypeService.get(id);
         alcoholTypeService.create(alcoholType1);
+        Alcohol alcohol = new Alcohol("Джин", alcoholType);
+        service.create(alcohol);
+        Bar bar = new Bar("Пабчик", "Улица колотушкина, дом 7", List.of(alcohol));
+        barService.create(bar);
     }
 }

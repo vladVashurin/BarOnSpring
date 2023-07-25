@@ -57,7 +57,7 @@ public class AlcoholTypeServiceImpl implements AlcoholTypeService {
     @Transactional
     @Override
     public AlcoholType delete(Long id) {
-       AlcoholType alcoholType = get(id);
+        AlcoholType alcoholType = get(id);
         alcoholTypeRepository.deleteById(id);
         return alcoholType;
     }

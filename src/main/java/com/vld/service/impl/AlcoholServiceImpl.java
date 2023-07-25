@@ -45,7 +45,7 @@ public class AlcoholServiceImpl implements AlcoholService {
     public Alcohol update(Long alcoholId, Map<Object, Object> fields) {
         Alcohol alcohol = get(alcoholId);
         fields.forEach((key, value) -> {
-            if(!key.equals("alcoholId")) {
+            if (!key.equals("alcoholId")) {
                 Field field = ReflectionUtils.findField(Alcohol.class, (String) key);
                 field.setAccessible(true);
                 ReflectionUtils.setField(field, alcohol, value);
